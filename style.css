@@ -67,7 +67,7 @@
 }
 
 .hero {
-  background: url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png)
+  /* background: url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png)
       center,
     url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 45%
       50%,
@@ -103,10 +103,10 @@
     url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 53%
       50%,
     url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 100%
-      50%;
-
+      50%; */
+  background-image: url(https://images.unsplash.com/photo-1518908336710-4e1cf821d3d1?q=80&w=1613&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 
   display: flex;
   justify-content: flex-end;
