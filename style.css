@@ -67,44 +67,7 @@
 }
 
 .hero {
-  /* background: url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png)
-      center,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 45%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 41%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 35%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 29%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 22%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 16%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 11%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 6% 50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 3% 50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 0% 50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 42%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 57%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 64%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 71%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 79%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 85%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 92%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 53%
-      50%,
-    url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png) 100%
-      50%; */
-  background-image: url(https://images.unsplash.com/photo-1518908336710-4e1cf821d3d1?q=80&w=1613&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-image: url(./imgs/ammar-abu-zaid-2a70aGTDHOk-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -153,7 +116,6 @@
 .discover-box button {
   width: 222px;
   height: 74px;
-  display: inline-block;
   background-color: #b88e2f;
   border: none;
   color: #fff;
@@ -174,12 +136,106 @@ main h2 {
   margin-top: 59px;
   margin-bottom: 32px;
 }
+.col {
+  margin-left: 0;
+  position: relative;
+}
+.row {
+  margin-bottom: 32px;
+}
+.product-card {
+  background-color: #f4f5f7;
+  width: 285px;
+  height: 446px;
+  position: relative;
+}
 
+.product-card img {
+  width: 100%;
+  object-fit: cover;
+}
+.hover-wrapper {
+  width: 200px;
+  position: absolute;
+  width: 202px;
+  height: 48px;
+  top: 175px;
+  z-index: 1;
+}
+.hover-actions {
+  display: flex;
+  justify-content: space-around;
+}
+.hover-wrapper button {
+  width: 202px;
+  height: 48px;
+}
+
+.info {
+  padding: 16px 20px 30px 16px;
+}
+
+.info h3 {
+  font-size: 24px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  line-height: 28.8px;
+  margin-bottom: 8px;
+}
+.info > p {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #898989;
+  margin-bottom: 8px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.price p:first-child {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 600;
+}
+.discount {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #b0b0b0;
+  text-decoration: line-through;
+}
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 81px;
+}
+.show-more {
+  text-align: center;
+
+  border: 1px solid #b88e2f;
+  color: #b88e2f;
+  background-color: #fff;
+  width: 245px;
+  height: 48px;
+  font-family: "Poppins";
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  align-items: center;
+}
 /* Media querry */
-@media screen and (max-width: 1440px) {
+/* @media screen and (max-width: 1440px) {
   .hero {
     background-image: url(./imgs/scandinavian-interior-mockup-wall-decal-background\ 1.png);
     background-repeat: no-repeat;
     background-size: cover;
   }
-}
+} */
