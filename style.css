@@ -136,9 +136,20 @@ main h2 {
   margin-top: 59px;
   margin-bottom: 32px;
 }
+
+/* Our products */
 .col {
   margin-left: 0;
+  padding: 0;
   position: relative;
+}
+
+.col:hover {
+  cursor: pointer;
+}
+
+.col:hover .hover-wrapper {
+  visibility: initial;
 }
 .row {
   margin-bottom: 32px;
@@ -148,27 +159,82 @@ main h2 {
   width: 285px;
   height: 446px;
   position: relative;
+  z-index: 1;
+
+  /* transition: all ease-in 0.5s; */
 }
 
 .product-card img {
   width: 100%;
   object-fit: cover;
+  /* visibility: hidden; */
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hover-wrapper {
-  width: 200px;
+  background-color: rgba(58, 58, 58, 0.7);
+
+  width: 285px;
+  height: 446px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
   position: absolute;
+  z-index: 2;
+}
+
+.wrapper-box {
+  width: 252px;
+  height: 96px;
+}
+.wrapper-box button {
+  background-color: #fff;
+  border: none;
   width: 202px;
   height: 48px;
-  top: 175px;
-  z-index: 1;
+  margin-left: 25px;
+  margin-bottom: 24px;
 }
+
+.wrapper-box button a {
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #e89f71;
+}
+
 .hover-actions {
   display: flex;
   justify-content: space-around;
 }
-.hover-wrapper button {
-  width: 202px;
-  height: 48px;
+
+.icons {
+  color: #fff;
+
+  display: flex;
+}
+
+.icons p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+  text-align: center;
+  margin-left: 4px;
+}
+
+.icons i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .info {
