@@ -67,7 +67,7 @@
 }
 
 .hero {
-  background-image: url(./imgs/ammar-abu-zaid-2a70aGTDHOk-unsplash.jpg);
+  background-image: url(../imgs/ammar-abu-zaid-2a70aGTDHOk-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -138,17 +138,32 @@ main h2 {
 }
 
 /* Our products */
-.col {
+
+.row {
+  /* width: 285px; */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.products-wrapper {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.col-wrapper {
   margin-left: 0;
   padding: 0;
   position: relative;
+  width: 285px;
 }
 
-.col:hover {
+.col-wrapper:hover {
   cursor: pointer;
 }
 
-.col:hover .hover-wrapper {
+.col-wrapper:hover .hover-wrapper {
   visibility: initial;
 }
 .row {
@@ -259,6 +274,7 @@ main h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* padding-bottom: 30px; */
 }
 .price p:first-child {
   font-family: "Poppins", sans-serif;
@@ -274,11 +290,13 @@ main h2 {
   color: #b0b0b0;
   text-decoration: line-through;
 }
+
 .btn-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 81px;
+  margin-top: 32px;
 }
 
 .show-more {
@@ -314,7 +332,6 @@ footer .usefull h3 {
   font-size: 24px;
   line-height: 36px;
   margin-bottom: 50px;
-  cursor: default;
 }
 
 .usefull p {
@@ -323,7 +340,6 @@ footer .usefull h3 {
   font-size: 16px;
   line-height: 24px;
   color: #9f9f9f;
-  cursor: default;
 }
 
 .col h4 {
@@ -343,6 +359,7 @@ ul {
 }
 ul li {
   list-style: none;
+  cursor: pointer;
 }
 
 li {
@@ -381,7 +398,7 @@ li {
   display: flex;
   gap: 11px;
 }
-.subscribe-wrapper button {
+.subscribe-wrapper .subs {
   border: none;
   border-bottom: 1px solid black;
   font-family: "Poppins", sans-serif;
@@ -389,6 +406,7 @@ li {
   font-size: 14px;
   line-height: 21px;
   background-color: #fff;
+  cursor: pointer;
 }
 
 .subscribe-wrapper input {

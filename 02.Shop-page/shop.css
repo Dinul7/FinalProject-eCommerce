@@ -1,0 +1,128 @@
+@import url(../01.Home-page/style.css);
+
+.shop-banner {
+  background: url(../imgs/gilang-ramadhan-KKprtFExl7c-unsplash.jpg);
+  box-shadow: 0px 0px 15px 3px #9f9f9f;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+  position: relative;
+  height: 316px;
+  opacity: 0.5;
+}
+
+.shop-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 121px;
+  z-index: 1;
+}
+.shop-wrapper h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 72px;
+  color: #000;
+}
+
+.place-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 24px;
+}
+
+.home {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home + p {
+  color: #000;
+  width: 14px;
+  /* height: 8px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.place-wrapper:last-child {
+  color: #000;
+  font-family: "Poppins";
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.results {
+  height: 100px;
+  background-color: #f9f1e7;
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+}
+
+.results p {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  height: 37px;
+  color: #000;
+  border-left: 2px solid #9f9f9f;
+  display: flex;
+  align-items: center;
+  padding-left: 34px;
+}
+
+.row {
+  margin-top: 17px;
+  gap: 32px;
+}
+
+.products-wrapper {
+  margin-top: 63px;
+}
+
+.btn-wrapper {
+  margin-top: 40px;
+  margin-bottom: 47px;
+  display: flex;
+  gap: 38px;
+  height: 90px;
+  padding-top: 30px;
+}
+
+.page-btn {
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
+  background-color: #f9f1e7;
+  border: none;
+
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.next-btn {
+  width: 98px;
+}
+
+.page-btn.active {
+  background-color: #b88e2f;
+  color: #fff;
+}
