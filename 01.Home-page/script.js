@@ -21,7 +21,7 @@ const colWrapper = document.querySelectorAll(".col-wrapper");
 const printeazaProdus = function (product) {
   for (i = 0; i < colWrapper.length; i++) {
     const prodDiv = document.createElement("div");
-    prodDiv.classList.add(".product-card");
+    prodDiv.classList.add("product-card");
 
     prodDiv.innerHTML = `
     <img src="${product[i].thumb}" />
