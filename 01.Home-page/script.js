@@ -18,21 +18,19 @@ const fetchGames = async function () {
 fetchGames();
 
 const printeazaProdus = function (product) {
-  const productCardsArr = Array.from(productCards);
-  for (let i = 0; i < productCardsArr.length; i++) {
-    const newItem = productCardsArr[i];
-    console.log(newItem);
-  }
-  console.log(product.title);
+  arrayDeProduse.push(product);
 };
 
 function printeazaProduse(arrayDeProduse) {
   for (let i = 0; i < colWrapper.length; i++) {
     // console.log(arrayDeProduse[i]);
-    printeazaProdus(arrayDeProduse[i]);
+    printeazaProdus([arrayDeProduse[i]]);
   }
 }
 
+const arrayDeProduse = [];
+
+console.log(arrayDeProduse);
 // function printeazaProduse(arrayDeProduse) {
 //   arrayDeProduse.forEach((produs) => printeazaProdus(produs));
 // }
