@@ -1,7 +1,6 @@
-const colWrapper = document.querySelectorAll(".col-wrapper");
-const productCards = document.querySelectorAll(".product-card");
-// console.log(productCards.entries());
-const productCardsArr = Array.from(productCards);
+// const productCards = document.querySelectorAll(".product-card");
+// console.log(productCards);
+// const productCardsArr = Array.from(productCards);
 
 const fetchGames = async function () {
   const rasp = await fetch(
@@ -17,20 +16,33 @@ const fetchGames = async function () {
 
 fetchGames();
 
+const colWrapper = document.querySelectorAll(".col-wrapper");
+
 const printeazaProdus = function (product) {
-  arrayDeProduse.push(product);
+  for (i = 0; i < colWrapper.length; i++) {
+    const prodDiv = document.createElement("div");
+    prodDiv.classList.add(".product-card");
+
+    prodDiv.innerHTML = `
+    <img src="${product[i].thumb}" />
+              <div class="info">
+                <h3>${product[i].title}</h3>
+                <p>Sylish cafe chair</p>
+                <div class="price">
+                  <p>Rp 2.500.000</p>
+                </div>
+              </div>
+    
+    `;
+
+    colWrapper[i].appendChild(prodDiv);
+  }
+  colWrapper.forEach((wrap) => {
+    wrap.appendChild(prodDiv);
+  });
 };
 
 function printeazaProduse(arrayDeProduse) {
-  for (let i = 0; i < colWrapper.length; i++) {
-    // console.log(arrayDeProduse[i]);
-    printeazaProdus([arrayDeProduse[i]]);
-  }
+  const produsePentruCard = arrayDeProduse.slice(0, 8);
+  printeazaProdus(produsePentruCard);
 }
-
-const arrayDeProduse = [];
-
-console.log(arrayDeProduse);
-// function printeazaProduse(arrayDeProduse) {
-//   arrayDeProduse.forEach((produs) => printeazaProdus(produs));
-// }

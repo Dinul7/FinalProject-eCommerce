@@ -175,10 +175,11 @@ main h2 {
   height: 446px;
   position: relative;
   z-index: 1;
+  border: 1px solid #000;
 }
 
 .product-card img {
-  width: 100%;
+  width: 285px;
   object-fit: cover;
   /* visibility: hidden; */
 }
