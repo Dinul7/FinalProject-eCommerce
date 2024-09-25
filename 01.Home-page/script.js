@@ -1,6 +1,4 @@
-// const productCards = document.querySelectorAll(".product-card");
-// console.log(productCards);
-// const productCardsArr = Array.from(productCards);
+const colWrapper = document.querySelectorAll(".col-wrapper");
 
 const fetchGames = async function () {
   const rasp = await fetch(
@@ -10,13 +8,11 @@ const fetchGames = async function () {
 
   const jocuriArr = jocuri;
   console.log(jocuriArr.length);
-
+  console.log(jocuriArr);
   printeazaProduse(jocuriArr);
 };
 
 fetchGames();
-
-const colWrapper = document.querySelectorAll(".col-wrapper");
 
 const printeazaProdus = function (product) {
   for (i = 0; i < colWrapper.length; i++) {
@@ -27,9 +23,10 @@ const printeazaProdus = function (product) {
     <img src="${product[i].thumb}" />
               <div class="info">
                 <h3>${product[i].title}</h3>
-                <p>Sylish cafe chair</p>
+                <p>Steam score: ${product[i].steamRatingPercent}</p>
                 <div class="price">
-                  <p>Rp 2.500.000</p>
+                  <p>${product[i].salePrice}$</p>
+                  <p class="discount">${product[i].normalPrice}$</p>
                 </div>
               </div>
     
@@ -37,12 +34,11 @@ const printeazaProdus = function (product) {
 
     colWrapper[i].appendChild(prodDiv);
   }
-  colWrapper.forEach((wrap) => {
-    wrap.appendChild(prodDiv);
-  });
 };
 
 function printeazaProduse(arrayDeProduse) {
   const produsePentruCard = arrayDeProduse.slice(0, 8);
+  console.log(produsePentruCard);
+
   printeazaProdus(produsePentruCard);
 }

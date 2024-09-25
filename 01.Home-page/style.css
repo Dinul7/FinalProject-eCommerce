@@ -175,13 +175,12 @@ main h2 {
   height: 446px;
   position: relative;
   z-index: 1;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 }
 
 .product-card img {
   width: 100%;
   object-fit: cover;
-  /* visibility: hidden; */
 }
 
 .wrap {
@@ -252,15 +251,21 @@ main h2 {
 }
 
 .info {
-  padding: 16px 20px 30px 16px;
+  padding: 30px 20px 30px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .info h3 {
+  height: 80px;
   font-size: 24px;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   line-height: 28.8px;
-  margin-bottom: 8px;
+  margin-bottom: 30px;
+
+  text-align: center;
 }
 .info > p {
   font-family: "Poppins", sans-serif;
@@ -275,7 +280,8 @@ main h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding-bottom: 30px; */
+  flex-direction: column;
+  gap: 15px;
 }
 .price p:first-child {
   font-family: "Poppins", sans-serif;
