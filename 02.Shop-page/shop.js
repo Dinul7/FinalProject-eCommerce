@@ -49,7 +49,7 @@ const chosePlatform = (steam, metaCritic) =>
   steam > metaCritic ? "Steam" : "MetaCritic";
 
 function printeazaProduse(arrayDeProduse) {
-  const produsePentruCard = arrayDeProduse.slice(0, 8);
+  const produsePentruCard = arrayDeProduse;
   console.log(produsePentruCard);
 
   printeazaProdus(produsePentruCard);
