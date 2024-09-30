@@ -1,4 +1,9 @@
 const colWrapper = document.querySelectorAll(".col-wrapper");
+const shopBtn = document.querySelector(".cart-logo");
+const shoppingCart = document.querySelector(".shopping-cart");
+const bagBtn = document.querySelector(".fa-shopping-bag");
+const banner = document.querySelector(".banner");
+console.log(bagBtn);
 
 const fetchGames = async function () {
   const rasp = await fetch(
@@ -54,3 +59,19 @@ function printeazaProduse(arrayDeProduse) {
 
   printeazaProdus(produsePentruCard);
 }
+
+shopBtn.addEventListener("click", () => {
+  shoppingCart.classList.remove("no-show");
+});
+
+bagBtn.addEventListener("click", () => {
+  shoppingCart.classList.add("no-show");
+});
+
+// shoppingCart.addEventListener("click", () => {
+//   shoppingCart.classList.add("no-show");
+// });
+
+// bagBtn.addEventListener("click", (e) => {
+//   shoppingCart.classList.add("no-show");
+// });

@@ -1,4 +1,7 @@
 const colWrapper = document.querySelectorAll(".col-wrapper");
+const shopBtn = document.querySelector(".cart-logo");
+const cartBtn = document.querySelector(".shopping-cart");
+const bagBtn = document.querySelector(".fa-shopping-bag");
 
 const fetchGames = async function () {
   const rasp = await fetch(
@@ -54,3 +57,15 @@ function printeazaProduse(arrayDeProduse) {
 
   printeazaProdus(produsePentruCard);
 }
+
+shopBtn.addEventListener("click", () => {
+  cartBtn.classList.remove("no-show");
+});
+
+bagBtn.addEventListener("click", () => {
+  cartBtn.classList.add("no-show");
+});
+
+cartBtn.addEventListener("click", () => {
+  cartBtn.classList.add("no-show");
+});
