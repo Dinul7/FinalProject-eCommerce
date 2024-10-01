@@ -1,0 +1,7 @@
+@import url(../01.Home-page/style.css);
+@import url(../02.Shop-page/shop.css);
+@import url(../04.Checkout/checkout.css);
+
+.single-product {
+  height: 765px;
+}
