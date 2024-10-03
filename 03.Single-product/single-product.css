@@ -4,4 +4,42 @@
 
 .single-product {
   height: 765px;
+  display: flex;
+  gap: 105px;
+  margin-top: 35px;
+}
+
+.input-box::-webkit-inner-spin-button,
+.input-box::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-box[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.left-side {
+  display: flex;
+  gap: 31px;
+}
+
+.big-pic {
+  background-color: #f9f1e7;
+  height: 500px;
+}
+
+.small-pics {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.pic {
+  width: 76px;
+  height: 80px;
+  background-color: #f9f1e7;
+  border-radius: 10px;
+}
+.pic img {
 }
