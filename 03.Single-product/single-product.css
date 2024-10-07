@@ -37,16 +37,6 @@
   line-height: 24px;
 } */
 
-.input-box::-webkit-inner-spin-button,
-.input-box::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.input-box[type="number"] {
-  -moz-appearance: textfield;
-}
-
 .left-side {
   display: flex;
   gap: 31px;
@@ -168,4 +158,98 @@
 .size-active {
   background-color: #b88e2f;
   color: #fff;
+}
+
+.color-wrapper p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: #9f9f9f;
+
+  margin-bottom: 12px;
+  margin-top: 18px;
+}
+
+.colors {
+  display: flex;
+  gap: 16px;
+
+  margin-bottom: 32px;
+}
+
+.color-1,
+.color-2,
+.color-3 {
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+}
+
+.color-1 {
+  background-color: #816dfa;
+}
+.color-2 {
+  background-color: #000;
+}
+.color-3 {
+  background-color: #b88e2f;
+}
+
+.input-box::-webkit-inner-spin-button,
+.input-box::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-box[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.quantity {
+  display: flex;
+  gap: 18px;
+}
+.quantity-wrap {
+  display: flex;
+  height: 64px;
+  width: 123px;
+  border: 1px solid #9f9f9f;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+}
+.quantity .minus,
+.plus {
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.plus,
+.minus,
+.input-box {
+}
+
+.plus,
+.minus {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.input-box {
+  border: none;
+  text-align: center;
+  background-color: #fff;
+
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.sp-add-cart {
+  border: 1px solid black;
+  background-color: red;
 }
