@@ -3,7 +3,9 @@ const shopBtn = document.querySelector(".cart-logo");
 const shoppingCart = document.querySelector(".shopping-cart");
 const bagBtn = document.querySelector(".fa-shopping-bag");
 const banner = document.querySelector(".banner");
-console.log(bagBtn);
+const clearBtn = document.querySelector(".fa-times-circle");
+const cartProducts = document.querySelector(".shopping-cart-products");
+console.log(clearBtn);
 
 const fetchGames = async function () {
   const rasp = await fetch(
@@ -75,3 +77,8 @@ bagBtn.addEventListener("click", () => {
 // bagBtn.addEventListener("click", (e) => {
 //   shoppingCart.classList.add("no-show");
 // });
+
+clearBtn.addEventListener("click", () => {
+  cartProducts.innerHTML = "";
+  clearBtn.style.display = "none";
+});
