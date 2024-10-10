@@ -5,13 +5,22 @@ const bagBtn = document.querySelector(".fa-shopping-bag");
 const banner = document.querySelector(".banner");
 
 const fetchGames = async function () {
-  const rasp = await fetch("https://www.cheapshark.com/api/1.0/games?id=612");
+  const rasp = await fetch("https://fakestoreapi.com/products");
   let jocuri = await rasp.json();
 
   const jocuriArr = jocuri;
 
   console.log(jocuriArr);
 };
+
+// const fetchGames = async function () {
+//   const resp = await fetch(
+//     "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15"
+//   );
+//   const jocuri = resp.json();
+
+//   console.log(jocuri);
+// };
 
 fetchGames();
 

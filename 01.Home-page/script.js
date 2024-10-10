@@ -49,12 +49,6 @@ const printeazaProdus = function (product) {
   }
 };
 
-const chooseHighScore = (steamScore, metacriticScore) =>
-  steamScore > metacriticScore ? steamScore : metacriticScore;
-
-const chosePlatform = (steam, metaCritic) =>
-  steam > metaCritic ? "Steam" : "MetaCritic";
-
 function printeazaProduse(arrayDeProduse) {
   const produsePentruCard = arrayDeProduse.slice(0, 8);
   console.log(produsePentruCard);
@@ -70,15 +64,13 @@ bagBtn.addEventListener("click", () => {
   shoppingCart.classList.add("no-show");
 });
 
-// shoppingCart.addEventListener("click", () => {
-//   shoppingCart.classList.add("no-show");
-// });
-
-// bagBtn.addEventListener("click", (e) => {
-//   shoppingCart.classList.add("no-show");
-// });
-
 clearBtn.addEventListener("click", () => {
   cartProducts.innerHTML = "";
   clearBtn.style.display = "none";
 });
+
+const chooseHighScore = (steamScore, metacriticScore) =>
+  steamScore > metacriticScore ? steamScore : metacriticScore;
+
+const chosePlatform = (steam, metaCritic) =>
+  steam > metaCritic ? "Steam" : "MetaCritic";

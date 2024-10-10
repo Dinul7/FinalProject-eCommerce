@@ -1,4 +1,5 @@
-const colWrapper = document.querySelectorAll(".col-wrapper");
+const prodsWrapper = document.getElementById("prods-wrap");
+console.log(prodsWrapper);
 const shopBtn = document.querySelector(".cart-logo");
 const cartBtn = document.querySelector(".shopping-cart");
 const bagBtn = document.querySelector(".fa-shopping-bag");
@@ -18,9 +19,39 @@ const fetchGames = async function () {
 fetchGames();
 
 const printeazaProdus = function (product) {
-  for (i = 0; i < colWrapper.length; i++) {
+  console.log(product.length);
+  for (i = 0; i < product.length; i++) {
+    const colWrapper = document.createElement("div");
+    const hoverDiv = document.createElement("div");
     const prodDiv = document.createElement("div");
+    colWrapper.classList.add("col-wrapper");
     prodDiv.classList.add("product-card");
+    hoverDiv.classList.add("hover-wrapper");
+
+    prodsWrapper.appendChild(colWrapper);
+
+    hoverDiv.innerHTML = `
+     <div class="wrap">
+      <div class="wrapper-box">
+     <button><a href="#">Add To cart</a></button>
+     <div class="hover-actions">
+       <div class="icons">
+         <i class="fa fa-share-alt"></i>
+         <p>Share</p>
+       </div>
+       <div class="icons">
+         <i class="fa fa-balance-scale"></i>
+         <p>Compare</p>
+       </div>
+       <div class="icons">
+         <i class="fa fa-heart-o"></i>
+         <p>Like</p>
+       </div>
+     </div>
+   </div>
+ </div>
+    
+    `;
 
     prodDiv.innerHTML = `
     <img src="${product[i].thumb}" />
@@ -41,7 +72,8 @@ const printeazaProdus = function (product) {
     
     `;
 
-    colWrapper[i].appendChild(prodDiv);
+    colWrapper.appendChild(hoverDiv);
+    colWrapper.appendChild(prodDiv);
   }
 };
 
