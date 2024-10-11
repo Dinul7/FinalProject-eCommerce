@@ -369,12 +369,20 @@ main h2 {
   margin-bottom: 24px;
 }
 
-.wrapper-box button a {
+/* .wrapper-box button a {
   text-decoration: none;
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;
   color: #e89f71;
+} */
+.wrapper-box .hover-add-to-cart {
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #e89f71;
+  cursor: pointer;
 }
 
 .hover-actions {
