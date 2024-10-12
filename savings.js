@@ -56,3 +56,31 @@
 //     colWrapper.appendChild(hoverDiv);
 //     colWrapper.appendChild(prodDiv);
 //   }
+
+
+
+
+
+
+ // hoverDiv.innerHTML = `
+  //      <div class="wrap">
+  //       <div class="wrapper-box">
+  //       <button class="hover-add-to-cart">Add To cart</button>
+  //      <div class="hover-actions">
+  //        <div class="icons">
+  //          <i class="fa fa-share-alt"></i>
+  //          <p>Share</p>
+  //        </div>
+  //        <div class="icons">
+  //          <i class="fa fa-balance-scale"></i>
+  //          <p>Compare</p>
+  //        </div>
+  //        <div class="icons">
+  //          <i class="fa fa-heart-o"></i>
+  //          <p>Like</p>
+  //        </div>
+  //      </div>
+  //    </div>
+  //  </div>
+
+  //     `;
