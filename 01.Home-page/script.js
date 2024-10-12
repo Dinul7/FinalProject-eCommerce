@@ -98,14 +98,26 @@ const productsCart = [];
 function addToCart(product) {
   productsCart.push(product);
   printeazaCart(productsCart);
-}
 
-printeazaCart(productsCart);
+  if (productsCart.length == 0 && shoppingCart.classList.contains("no-show")) {
+    clearBtn.style.visibility = "hidden";
+  } else if (
+    productsCart.length > 0 &&
+    shoppingCart.classList.contains("no-show")
+  ) {
+    clearBtn.style.visibility = "hidden";
+  } else if (productsCart.length > 0) {
+    clearBtn.style.visibility = "visible";
+  } else {
+    clearBtn.style.visibility = "visible";
+  }
+}
 
 function printeazaElementCart(product) {
   const shoppingCartProducts = document.querySelector(
     ".shopping-cart-products"
   );
+
   const cartElement = document.createElement("div");
   shoppingCartProducts.appendChild(cartElement);
 
@@ -118,8 +130,6 @@ function printeazaElementCart(product) {
               <p><span>1</span> <span>X</span> $${product.salePrice}</p>
             </div>
   `;
-
-  clearBtn.style.visibility = "1";
 }
 
 function printeazaCart(cartIntreg) {

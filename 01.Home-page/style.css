@@ -101,6 +101,7 @@ body {
   top: 3%;
   margin-top: 15px;
   visibility: hidden;
+  z-index: -7;
   /* cursor: pointer; */
 }
 
