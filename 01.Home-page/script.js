@@ -6,9 +6,6 @@ const bagBtn = document.querySelector(".fa-shopping-bag");
 const banner = document.querySelector(".banner");
 const clearBtn = document.querySelector(".fa-times-circle");
 const cartProducts = document.querySelector(".shopping-cart-products");
-// const addToCartButton = document.querySelector(".hover-add-to-cart");
-
-// console.log(addToCartButton);
 
 const fetchGames = async function () {
   const rasp = await fetch(
@@ -17,8 +14,6 @@ const fetchGames = async function () {
   let jocuri = await rasp.json();
 
   const jocuriArr = jocuri;
-  // console.log(jocuriArr.length);
-  // console.log(jocuriArr);
   printeazaProduse(jocuriArr);
 };
 
@@ -27,9 +22,8 @@ fetchGames();
 const printeazaProdus = function (product) {
   const colWrapper = document.createElement("div");
   const prodDiv = document.createElement("div");
-  const hoverDiv = document.createElement("div");
 
-  // addButton.classList.add("hover-add-to-cart");
+  const hoverDiv = document.createElement("div");
   const wrapDiv = document.createElement("div");
   const wrappedBoxDiv = document.createElement("div");
   const addButton = document.createElement("button");
@@ -103,9 +97,38 @@ const productsCart = [];
 
 function addToCart(product) {
   productsCart.push(product);
+  printeazaCart(productsCart);
 }
 
-// console.log(productsCart);
+printeazaCart(productsCart);
+
+function printeazaElementCart(product) {
+  const shoppingCartProducts = document.querySelector(
+    ".shopping-cart-products"
+  );
+  const cartElement = document.createElement("div");
+  shoppingCartProducts.appendChild(cartElement);
+
+  cartElement.classList.add("cart-product");
+
+  cartElement.innerHTML = `
+  <img src="${product.thumb}" alt="Sofa">
+            <div class="cart-product-info">
+              <p>${product.title}</p>
+              <p><span>1</span> <span>X</span> $${product.salePrice}</p>
+            </div>
+  `;
+
+  clearBtn.style.visibility = "1";
+}
+
+function printeazaCart(cartIntreg) {
+  const shoppingCartProducts = document.querySelector(
+    ".shopping-cart-products"
+  );
+  shoppingCartProducts.innerHTML = "";
+  cartIntreg.forEach(printeazaElementCart);
+}
 
 // Event listeners
 shopBtn.addEventListener("click", () => {
@@ -128,10 +151,3 @@ const chooseHighScore = (steamScore, metacriticScore) =>
 
 const chosePlatform = (steam, metaCritic) =>
   steam > metaCritic ? "Steam" : "MetaCritic";
-
-//
-// const addToCartButton = document.querySelector(".hover-add-to-cart");
-
-// addToCartButton.addEventListener("click", function (e) {
-//   console.log(e.target);
-// });
