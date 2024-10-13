@@ -87,7 +87,7 @@ const printeazaProdus = function (product) {
 
 function printeazaProduse(arrayDeProduse) {
   const produsePentruCard = arrayDeProduse.slice(0, 8);
-  console.log(produsePentruCard);
+  // console.log(produsePentruCard);
   produsePentruCard.forEach(function (el) {
     printeazaProdus(el);
   });
@@ -127,7 +127,7 @@ function printeazaElementCart(product) {
   <img src="${product.thumb}" alt="Sofa">
             <div class="cart-product-info">
               <p>${product.title}</p>
-              <p><span>1</span> <span>X</span> $${product.salePrice}</p>
+              <p><span></span> <span>X</span> $${product.salePrice}</p>
             </div>
   `;
 }
@@ -138,6 +138,19 @@ function printeazaCart(cartIntreg) {
   );
   shoppingCartProducts.innerHTML = "";
   cartIntreg.forEach(printeazaElementCart);
+
+  shoppingCartTotal.innerHTML = `
+  <p>Subtotal</p>
+          <p>$ ${calculateTotal(cartIntreg)}</p>
+  `;
+}
+
+function calculateTotal(obj) {
+  return obj.reduce(
+    (sum, curentElement) =>
+      sum + +parseFloat(curentElement.salePrice).toFixed(2),
+    0
+  );
 }
 
 // Event listeners
