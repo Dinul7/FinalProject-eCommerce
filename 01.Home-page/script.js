@@ -81,7 +81,6 @@ const printeazaProdus = function (product) {
 
   addButton.addEventListener("click", function () {
     addToCart(product);
-    console.log(productsCart);
   });
 };
 
@@ -95,62 +94,79 @@ function printeazaProduse(arrayDeProduse) {
 
 const productsCart = [];
 
+console.log(productsCart);
+
 function addToCart(product) {
   productsCart.push(product);
   printeazaCart(productsCart);
-
-  if (productsCart.length == 0 && shoppingCart.classList.contains("no-show")) {
-    clearBtn.style.visibility = "hidden";
-  } else if (
-    productsCart.length > 0 &&
-    shoppingCart.classList.contains("no-show")
-  ) {
-    clearBtn.style.visibility = "hidden";
-  } else if (productsCart.length > 0) {
-    clearBtn.style.visibility = "visible";
-  } else {
-    clearBtn.style.visibility = "visible";
-  }
 }
 
-function printeazaElementCart(product) {
-  const shoppingCartProducts = document.querySelector(
-    ".shopping-cart-products"
-  );
+// function printeazaElementCart(product) {
+//   const shoppingCartProducts = document.querySelector(
+//     ".shopping-cart-products"
+//   );
 
-  const cartElement = document.createElement("div");
-  shoppingCartProducts.appendChild(cartElement);
+//   const cartElement = document.createElement("div");
+//   shoppingCartProducts.appendChild(cartElement);
 
-  cartElement.classList.add("cart-product");
+//   cartElement.classList.add("cart-product");
 
-  cartElement.innerHTML = `
-  <img src="${product.thumb}" alt="Sofa">
-            <div class="cart-product-info">
-              <p>${product.title}</p>
-              <p><span></span> <span>X</span> $${product.salePrice}</p>
-            </div>
-  `;
-}
+//   cartElement.innerHTML = `
+//   <img src="${product.thumb}" alt="Sofa">
+//             <div class="cart-product-info">
+//               <p>${product.title}</p>
+//               <p><span></span> <span>X</span> $${product.salePrice}</p>
+//             </div>
+//   `;
+// }
 
 function printeazaCart(cartIntreg) {
   const shoppingCartProducts = document.querySelector(
     ".shopping-cart-products"
   );
   shoppingCartProducts.innerHTML = "";
-  cartIntreg.forEach(printeazaElementCart);
+  console.log(cartIntreg);
+
+  cartFiltrat = cartIntreg.filter(
+    (value, index, self) =>
+      index === self.findIndex((t) => t.internalName === value.internalName)
+  );
+  console.log(cartFiltrat);
+
+  cartFiltrat.forEach(function (prod) {
+    const shoppingCartProducts = document.querySelector(
+      ".shopping-cart-products"
+    );
+
+    const cartElement = document.createElement("div");
+    shoppingCartProducts.appendChild(cartElement);
+
+    cartElement.classList.add("cart-product");
+
+    cartElement.innerHTML = `
+    <img src="${prod.thumb}" alt="Sofa">
+              <div class="cart-product-info">
+                <p>${prod.title}</p>
+                <p><span>${cartIntreg.internalName}</span><span>X</span> $${prod.salePrice}</p>
+              </div>
+    `;
+  });
 
   shoppingCartTotal.innerHTML = `
   <p>Subtotal</p>
-          <p>$ ${calculateTotal(cartIntreg)}</p>
+          <p>$ ${parseFloat(calculateTotal(cartIntreg)).toFixed(2)}</p>
   `;
 }
 
+// function quantity(cart) {
+//   return cart.reduce((count, word) => {
+//     count[word.internalName] = (count[word.internalName] || 0) + 1;
+//     return count;
+//   }, {});
+// }
+
 function calculateTotal(obj) {
-  return obj.reduce(
-    (sum, curentElement) =>
-      sum + +parseFloat(curentElement.salePrice).toFixed(2),
-    0
-  );
+  return obj.reduce((sum, curentElement) => sum + +curentElement.salePrice, 0);
 }
 
 // Event listeners
