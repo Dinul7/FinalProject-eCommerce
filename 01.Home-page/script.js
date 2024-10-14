@@ -129,11 +129,24 @@ function printeazaCart(cartIntreg) {
 
   cartFiltrat = cartIntreg.filter(
     (value, index, self) =>
-      index === self.findIndex((t) => t.internalName === value.internalName)
+      index === self.findIndex((el) => el.internalName === value.internalName)
   );
-  console.log(cartFiltrat);
+
+  // const count = Array.from(
+  //   cartIntreg.reduce((r, c) => r.set(c, (r.get(c) || 0) + 1), new Map()),
+  //   ([key, count]) => ({ key, count })
+  // );
 
   cartFiltrat.forEach(function (prod) {
+    // console.log(count);
+
+    const count = Array.from(
+      cartIntreg.reduce((r, c) => r.set(c, (r.get(c) || 0) + 1), new Map()),
+      ([key, count]) => ({ key, count })
+    );
+
+    console.log(count);
+    let nrBucati = count.count;
     const shoppingCartProducts = document.querySelector(
       ".shopping-cart-products"
     );
@@ -147,7 +160,9 @@ function printeazaCart(cartIntreg) {
     <img src="${prod.thumb}" alt="Sofa">
               <div class="cart-product-info">
                 <p>${prod.title}</p>
-                <p><span>${cartIntreg.internalName}</span><span>X</span> $${prod.salePrice}</p>
+                <p><span>${+nrBucati}</span><span>X</span> $${
+      prod.salePrice
+    }</p>
               </div>
     `;
   });
@@ -158,12 +173,12 @@ function printeazaCart(cartIntreg) {
   `;
 }
 
-// function quantity(cart) {
-//   return cart.reduce((count, word) => {
-//     count[word.internalName] = (count[word.internalName] || 0) + 1;
-//     return count;
-//   }, {});
-// }
+function quantity(cart) {
+  return cart.reduce((count, word) => {
+    count[word.internalName] = (count[word.internalName] || 0) + 1;
+    return count;
+  }, {});
+}
 
 function calculateTotal(obj) {
   return obj.reduce((sum, curentElement) => sum + +curentElement.salePrice, 0);
