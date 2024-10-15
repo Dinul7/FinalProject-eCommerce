@@ -92,16 +92,35 @@ function printeazaProduse(arrayDeProduse) {
   });
 }
 
-const productsCart = [];
+const storedData = localStorage.getItem("cart");
+console.log(storedData);
+const userData = JSON.parse(storedData);
+console.log(userData);
+
+function cartAfterRefresh(userData) {
+  if (userData !== null) {
+    printeazaCart(userData);
+  } else {
+    return;
+  }
+}
+
+cartAfterRefresh(userData);
+
+const productsCart = userData !== null ? userData : [];
 
 console.log(productsCart);
 
 function addToCart(product) {
   productsCart.push(product);
+  localStorage.setItem("cart", JSON.stringify(productsCart));
   printeazaCart(productsCart);
+
+  console.log(productsCart);
 }
 
 function printeazaCart(cartIntreg) {
+  console.log(cartIntreg);
   const shoppingCartProducts = document.querySelector(
     ".shopping-cart-products"
   );
@@ -111,12 +130,13 @@ function printeazaCart(cartIntreg) {
   iElem.classList.add("fa");
   iElem.classList.add("fa-times-circle");
   shoppingCartProducts.appendChild(iElem);
+
   cartFiltrat = cartIntreg.filter(
     (value, index, self) =>
       index === self.findIndex((el) => el.internalName === value.internalName)
   );
 
-  cartFiltrat.forEach(function (prod) {
+  cartFiltrat.forEach(function (storedData) {
     // nrbucati(cartIntreg);
     const shoppingCartProducts = document.querySelector(
       ".shopping-cart-products"
@@ -127,13 +147,13 @@ function printeazaCart(cartIntreg) {
     cartElement.classList.add("cart-product");
     //puse pe cart element
     const imgEl = document.createElement("img");
-    imgEl.src = prod.thumb;
+    imgEl.src = storedData.thumb;
     const cartProductInfo = document.createElement("div");
     cartProductInfo.classList.add("cart-product-info");
 
     //puse pe cart product info
     const firstP = document.createElement("p");
-    firstP.innerText = prod.title;
+    firstP.innerText = storedData.title;
 
     const secondP = document.createElement("p");
     const firstSpan = document.createElement("span");
@@ -147,9 +167,9 @@ function printeazaCart(cartIntreg) {
     secondP.appendChild(secondSpan);
     secondP.appendChild(thirdSpan);
 
-    firstSpan.innerText = countValues(cartIntreg, prod.title);
+    firstSpan.innerText = countValues(cartIntreg, storedData.title);
     secondSpan.innerText = "X";
-    thirdSpan.innerText = prod.salePrice;
+    thirdSpan.innerText = storedData.salePrice;
 
     cartProductInfo.appendChild(firstP);
     cartProductInfo.append(secondP);
@@ -162,6 +182,12 @@ function printeazaCart(cartIntreg) {
   <p>Subtotal</p>
           <p>$ ${parseFloat(calculateTotal(cartIntreg)).toFixed(2)}</p>
   `;
+
+  iElem.addEventListener("click", () => {
+    cartProducts.innerHTML = "";
+    shoppingCartTotal.innerHTML = "";
+    localStorage.clear();
+  });
 }
 
 function calculateTotal(obj) {
@@ -186,11 +212,6 @@ shopBtn.addEventListener("click", () => {
 bagBtn.addEventListener("click", () => {
   shoppingCart.classList.add("no-show");
 });
-
-// iElem.addEventListener("click", () => {
-//   cartProducts.innerHTML = "";
-//   shoppingCartTotal.innerHTML = "";
-// });
 
 const chooseHighScore = (steamScore, metacriticScore) =>
   steamScore > metacriticScore ? steamScore : metacriticScore;
