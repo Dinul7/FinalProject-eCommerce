@@ -57,30 +57,52 @@
 //     colWrapper.appendChild(prodDiv);
 //   }
 
+// hoverDiv.innerHTML = `
+//      <div class="wrap">
+//       <div class="wrapper-box">
+//       <button class="hover-add-to-cart">Add To cart</button>
+//      <div class="hover-actions">
+//        <div class="icons">
+//          <i class="fa fa-share-alt"></i>
+//          <p>Share</p>
+//        </div>
+//        <div class="icons">
+//          <i class="fa fa-balance-scale"></i>
+//          <p>Compare</p>
+//        </div>
+//        <div class="icons">
+//          <i class="fa fa-heart-o"></i>
+//          <p>Like</p>
+//        </div>
+//      </div>
+//    </div>
+//  </div>
 
+//     `;
 
+// cartElement.innerHTML = `
+// <img src="${prod.thumb}" alt="Sofa">
+//           <div class="cart-product-info">
+//             <p>${prod.title}</p>
+//             <p><span class='quant-number'>1</span><span class='ics'>X</span> <span class='prod-sale-price'>${prod.salePrice}</span></p>
+//           </div>
+// `;
 
+// function printeazaElementCart(product) {
+//   const shoppingCartProducts = document.querySelector(
+//     ".shopping-cart-products"
+//   );
 
+//   const cartElement = document.createElement("div");
+//   shoppingCartProducts.appendChild(cartElement);
 
- // hoverDiv.innerHTML = `
-  //      <div class="wrap">
-  //       <div class="wrapper-box">
-  //       <button class="hover-add-to-cart">Add To cart</button>
-  //      <div class="hover-actions">
-  //        <div class="icons">
-  //          <i class="fa fa-share-alt"></i>
-  //          <p>Share</p>
-  //        </div>
-  //        <div class="icons">
-  //          <i class="fa fa-balance-scale"></i>
-  //          <p>Compare</p>
-  //        </div>
-  //        <div class="icons">
-  //          <i class="fa fa-heart-o"></i>
-  //          <p>Like</p>
-  //        </div>
-  //      </div>
-  //    </div>
-  //  </div>
+//   cartElement.classList.add("cart-product");
 
-  //     `;
+//   cartElement.innerHTML = `
+//   <img src="${product.thumb}" alt="Sofa">
+//             <div class="cart-product-info">
+//               <p>${product.title}</p>
+//               <p><span></span> <span>X</span> $${product.salePrice}</p>
+//             </div>
+//   `;
+// }

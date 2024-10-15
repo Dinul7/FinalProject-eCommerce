@@ -101,70 +101,61 @@ function addToCart(product) {
   printeazaCart(productsCart);
 }
 
-// function printeazaElementCart(product) {
-//   const shoppingCartProducts = document.querySelector(
-//     ".shopping-cart-products"
-//   );
-
-//   const cartElement = document.createElement("div");
-//   shoppingCartProducts.appendChild(cartElement);
-
-//   cartElement.classList.add("cart-product");
-
-//   cartElement.innerHTML = `
-//   <img src="${product.thumb}" alt="Sofa">
-//             <div class="cart-product-info">
-//               <p>${product.title}</p>
-//               <p><span></span> <span>X</span> $${product.salePrice}</p>
-//             </div>
-//   `;
-// }
-
 function printeazaCart(cartIntreg) {
   const shoppingCartProducts = document.querySelector(
     ".shopping-cart-products"
   );
-  shoppingCartProducts.innerHTML = "";
-  console.log(cartIntreg);
 
+  shoppingCartProducts.innerHTML = "";
+  const iElem = document.createElement("i");
+  iElem.classList.add("fa");
+  iElem.classList.add("fa-times-circle");
+  shoppingCartProducts.appendChild(iElem);
   cartFiltrat = cartIntreg.filter(
     (value, index, self) =>
       index === self.findIndex((el) => el.internalName === value.internalName)
   );
 
-  // const count = Array.from(
-  //   cartIntreg.reduce((r, c) => r.set(c, (r.get(c) || 0) + 1), new Map()),
-  //   ([key, count]) => ({ key, count })
-  // );
-
   cartFiltrat.forEach(function (prod) {
-    // console.log(count);
-
-    const count = Array.from(
-      cartIntreg.reduce((r, c) => r.set(c, (r.get(c) || 0) + 1), new Map()),
-      ([key, count]) => ({ key, count })
-    );
-
-    console.log(count);
-    let nrBucati = count.count;
+    // nrbucati(cartIntreg);
     const shoppingCartProducts = document.querySelector(
       ".shopping-cart-products"
     );
-
     const cartElement = document.createElement("div");
     shoppingCartProducts.appendChild(cartElement);
 
     cartElement.classList.add("cart-product");
+    //puse pe cart element
+    const imgEl = document.createElement("img");
+    imgEl.src = prod.thumb;
+    const cartProductInfo = document.createElement("div");
+    cartProductInfo.classList.add("cart-product-info");
 
-    cartElement.innerHTML = `
-    <img src="${prod.thumb}" alt="Sofa">
-              <div class="cart-product-info">
-                <p>${prod.title}</p>
-                <p><span>${+nrBucati}</span><span>X</span> $${
-      prod.salePrice
-    }</p>
-              </div>
-    `;
+    //puse pe cart product info
+    const firstP = document.createElement("p");
+    firstP.innerText = prod.title;
+
+    const secondP = document.createElement("p");
+    const firstSpan = document.createElement("span");
+    const secondSpan = document.createElement("span");
+    const thirdSpan = document.createElement("span");
+    firstSpan.classList.add("quant-number");
+    secondSpan.classList.add("ics");
+    thirdSpan.classList.add("prod-sale-price");
+
+    secondP.appendChild(firstSpan);
+    secondP.appendChild(secondSpan);
+    secondP.appendChild(thirdSpan);
+
+    firstSpan.innerText = countValues(cartIntreg, prod.title);
+    secondSpan.innerText = "X";
+    thirdSpan.innerText = prod.salePrice;
+
+    cartProductInfo.appendChild(firstP);
+    cartProductInfo.append(secondP);
+
+    cartElement.appendChild(imgEl);
+    cartElement.appendChild(cartProductInfo);
   });
 
   shoppingCartTotal.innerHTML = `
@@ -173,15 +164,18 @@ function printeazaCart(cartIntreg) {
   `;
 }
 
-function quantity(cart) {
-  return cart.reduce((count, word) => {
-    count[word.internalName] = (count[word.internalName] || 0) + 1;
-    return count;
-  }, {});
-}
-
 function calculateTotal(obj) {
   return obj.reduce((sum, curentElement) => sum + +curentElement.salePrice, 0);
+}
+
+function countValues(arr, countItem) {
+  let count = 0;
+  arr.forEach((el) => {
+    if (el.title == countItem) {
+      count++;
+    }
+  });
+  return count;
 }
 
 // Event listeners
@@ -193,12 +187,10 @@ bagBtn.addEventListener("click", () => {
   shoppingCart.classList.add("no-show");
 });
 
-clearBtn.addEventListener("click", () => {
-  cartProducts.innerHTML = "";
-  clearBtn.style.visibility = "hidden";
-
-  shoppingCartTotal.innerHTML = "";
-});
+// iElem.addEventListener("click", () => {
+//   cartProducts.innerHTML = "";
+//   shoppingCartTotal.innerHTML = "";
+// });
 
 const chooseHighScore = (steamScore, metacriticScore) =>
   steamScore > metacriticScore ? steamScore : metacriticScore;
