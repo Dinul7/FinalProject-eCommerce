@@ -93,9 +93,9 @@ function printeazaProduse(arrayDeProduse) {
 }
 
 const storedData = localStorage.getItem("cart");
-console.log(storedData);
+// console.log(storedData);
 const userData = JSON.parse(storedData);
-console.log(userData);
+// console.log(userData);
 
 function cartAfterRefresh(userData) {
   if (userData !== null) {
@@ -109,7 +109,7 @@ cartAfterRefresh(userData);
 
 const productsCart = userData !== null ? userData : [];
 
-console.log(productsCart);
+// console.log(productsCart);
 
 function addToCart(product) {
   productsCart.push(product);
@@ -120,7 +120,6 @@ function addToCart(product) {
 }
 
 function printeazaCart(cartIntreg) {
-  console.log(cartIntreg);
   const shoppingCartProducts = document.querySelector(
     ".shopping-cart-products"
   );
@@ -131,13 +130,7 @@ function printeazaCart(cartIntreg) {
   iElem.classList.add("fa-times-circle");
   shoppingCartProducts.appendChild(iElem);
 
-  cartFiltrat = cartIntreg.filter(
-    (value, index, self) =>
-      index === self.findIndex((el) => el.internalName === value.internalName)
-  );
-
-  cartFiltrat.forEach(function (storedData) {
-    // nrbucati(cartIntreg);
+  filtreazaCart(cartIntreg).forEach(function (storedData) {
     const shoppingCartProducts = document.querySelector(
       ".shopping-cart-products"
     );
@@ -145,6 +138,7 @@ function printeazaCart(cartIntreg) {
     shoppingCartProducts.appendChild(cartElement);
 
     cartElement.classList.add("cart-product");
+
     //puse pe cart element
     const imgEl = document.createElement("img");
     imgEl.src = storedData.thumb;
@@ -190,6 +184,13 @@ function printeazaCart(cartIntreg) {
   });
 }
 
+function filtreazaCart(cartDeFiltrat) {
+  return cartDeFiltrat.filter(
+    (value, index, self) =>
+      index === self.findIndex((el) => el.internalName === value.internalName)
+  );
+}
+
 function calculateTotal(obj) {
   return obj.reduce((sum, curentElement) => sum + +curentElement.salePrice, 0);
 }
@@ -204,6 +205,12 @@ function countValues(arr, countItem) {
   return count;
 }
 
+const chooseHighScore = (steamScore, metacriticScore) =>
+  steamScore > metacriticScore ? steamScore : metacriticScore;
+
+const chosePlatform = (steam, metaCritic) =>
+  steam > metaCritic ? "Steam" : "MetaCritic";
+
 // Event listeners
 shopBtn.addEventListener("click", () => {
   shoppingCart.classList.remove("no-show");
@@ -212,9 +219,3 @@ shopBtn.addEventListener("click", () => {
 bagBtn.addEventListener("click", () => {
   shoppingCart.classList.add("no-show");
 });
-
-const chooseHighScore = (steamScore, metacriticScore) =>
-  steamScore > metacriticScore ? steamScore : metacriticScore;
-
-const chosePlatform = (steam, metaCritic) =>
-  steam > metaCritic ? "Steam" : "MetaCritic";

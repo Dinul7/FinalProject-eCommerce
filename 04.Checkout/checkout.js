@@ -6,7 +6,8 @@ const bagBtn = document.querySelector(".fa-shopping-bag");
 const banner = document.querySelector(".banner");
 const clearBtn = document.querySelector(".fa-times-circle");
 const cartProducts = document.querySelector(".shopping-cart-products");
-
+const placeOrderBtn = document.getElementById("order-btn");
+// const imputsInfos = document.querySelectorAll("input");
 const fetchGames = async function () {
   const resp = await fetch(
     "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15"
@@ -93,9 +94,9 @@ const printeazaProdus = function (product) {
 };
 
 const storedData = localStorage.getItem("cart");
-console.log(storedData);
 const userData = JSON.parse(storedData);
-console.log(userData);
+// console.log(storedData);
+// console.log(userData);
 
 function cartAfterRefresh(userData) {
   if (userData !== null) {
@@ -124,12 +125,7 @@ function printeazaCart(cartIntreg) {
   iElem.classList.add("fa-times-circle");
   shoppingCartProducts.appendChild(iElem);
 
-  cartFiltrat = cartIntreg.filter(
-    (value, index, self) =>
-      index === self.findIndex((el) => el.internalName === value.internalName)
-  );
-
-  cartFiltrat.forEach(function (prod) {
+  filtreazaCart(cartIntreg).forEach(function (prod) {
     // nrbucati(cartIntreg);
     const shoppingCartProducts = document.querySelector(
       ".shopping-cart-products"
@@ -162,7 +158,7 @@ function printeazaCart(cartIntreg) {
 
     firstSpan.innerText = countValues(cartIntreg, prod.title);
     secondSpan.innerText = "X";
-    thirdSpan.innerText = prod.salePrice;
+    thirdSpan.innerText = "$ " + prod.salePrice;
 
     cartProductInfo.appendChild(firstP);
     cartProductInfo.append(secondP);
@@ -180,10 +176,65 @@ function printeazaCart(cartIntreg) {
     cartProducts.innerHTML = "";
     shoppingCartTotal.innerHTML = "";
   });
+
+  printeazaCheckout(cartIntreg);
+}
+
+function printeazaCheckout(cart) {
+  const orderProducts = document.querySelector(".order-products");
+  const subtotalEl = document.querySelector(".subtotal");
+  const discountEl = document.querySelector(".discount-checkout");
+  const totalEl = document.querySelector(".total");
+  console.log(cart);
+
+  filtreazaCart(cart).forEach(function (el) {
+    const productCheckout = document.createElement("div");
+    productCheckout.classList.add("product");
+    productCheckout.innerHTML = `
+    <p>${el.title} <small> X  ${countValues(cart, el.title)}</small></p>
+                  <p>$ ${el.normalPrice}</p>
+    `;
+
+    orderProducts.appendChild(productCheckout);
+
+    subtotalEl.innerHTML = `
+    <h5>Subtotal</h5>
+                <p>$ ${parseFloat(calculateTotalWitoutDiscount(cart)).toFixed(
+                  2
+                )}</p>
+                
+    `;
+
+    discountEl.innerHTML = `
+    <h5>Discount</h5>
+    <p>$ ${parseFloat(
+      parseFloat(calculateTotalWitoutDiscount(cart).toFixed(2)) -
+        parseFloat(calculateTotal(cart).toFixed(0))
+    )}
+    `;
+
+    totalEl.innerHTML = `
+    <h5>Total</h5>
+                <p>$ ${parseFloat(calculateTotal(cart)).toFixed(2)}</p>
+    `;
+  });
+}
+
+function filtreazaCart(cartDeFiltrat) {
+  return cartDeFiltrat.filter(
+    (value, index, self) =>
+      index === self.findIndex((el) => el.internalName === value.internalName)
+  );
 }
 
 function calculateTotal(obj) {
   return obj.reduce((sum, curentElement) => sum + +curentElement.salePrice, 0);
+}
+function calculateTotalWitoutDiscount(obj) {
+  return obj.reduce(
+    (sum, curentElement) => sum + +curentElement.normalPrice,
+    0
+  );
 }
 
 function countValues(arr, countItem) {
@@ -202,4 +253,43 @@ shopBtn.addEventListener("click", () => {
 
 bagBtn.addEventListener("click", () => {
   shoppingCart.classList.add("no-show");
+});
+
+placeOrderBtn.addEventListener("click", () => {
+  const firstName = document.getElementById("firstName");
+  const lastName = document.getElementById("lastName");
+  const street = document.getElementById("street");
+  const town = document.getElementById("town");
+
+  console.log(userData);
+  let jocuriCumparate = [];
+  userData.forEach((el) => {
+    jocuriCumparate.push(el.title + "");
+  });
+
+  if (
+    firstName.value.length == 0 ||
+    lastName.value.length == 0 ||
+    street.value.length == 0 ||
+    town.value.length == 0
+  ) {
+    alert("You need to fill all fileds in order to finish your purchase!");
+  } else {
+    console.log(
+      `You Bought ${
+        jocuriCumparate.length
+      } games : ${jocuriCumparate} all for $ ${parseFloat(
+        calculateTotal(userData)
+      ).toFixed(2)}`
+    );
+
+    document.querySelector(".order-products").innerHTML = "";
+    document.querySelector(".subtotal").innerHTML = "";
+    document.querySelector(".discount-checkout").innerHTML = "";
+    document.querySelector(".total").innerHTML = "";
+    document.querySelector(".shopping-cart-products").innerHTML = "";
+    document.querySelector(".shopping-cart-total").innerHTML = "";
+  }
+
+  localStorage.clear();
 });
