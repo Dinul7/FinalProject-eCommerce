@@ -21,65 +21,6 @@ const fetchGames = async function () {
 
 fetchGames();
 
-// const printeazaProdus = function (product) {
-//   console.log(product.length);
-//   for (i = 0; i < product.length; i++) {
-//     const colWrapper = document.createElement("div");
-//     const hoverDiv = document.createElement("div");
-//     const prodDiv = document.createElement("div");
-//     colWrapper.classList.add("col-wrapper");
-//     prodDiv.classList.add("product-card");
-//     hoverDiv.classList.add("hover-wrapper");
-
-//     prodsWrapper.appendChild(colWrapper);
-
-//     hoverDiv.innerHTML = `
-//      <div class="wrap">
-//       <div class="wrapper-box">
-//      <button class="hover-add-to-cart">Add To cart</button>
-//      <div class="hover-actions">
-//        <div class="icons">
-//          <i class="fa fa-share-alt"></i>
-//          <p>Share</p>
-//        </div>
-//        <div class="icons">
-//          <i class="fa fa-balance-scale"></i>
-//          <p>Compare</p>
-//        </div>
-//        <div class="icons">
-//          <i class="fa fa-heart-o"></i>
-//          <p>Like</p>
-//        </div>
-//      </div>
-//    </div>
-//  </div>
-
-//     `;
-
-//     prodDiv.innerHTML = `
-//     <img src="${product[i].thumb}" />
-//               <div class="info">
-//                 <h3>${product[i].title}</h3>
-//                 <p>${chosePlatform(
-//                   product[i].steamRatingPercent,
-//                   product[i].metacriticScore
-//                 )} score: ${chooseHighScore(
-//       product[i].steamRatingPercent,
-//       product[i].metacriticScore
-//     )}</p>
-//                 <div class="price">
-//                   <p>${product[i].salePrice}$</p>
-//                   <p class="discount">${product[i].normalPrice}$</p>
-//                 </div>
-//               </div>
-
-//     `;
-
-//     colWrapper.appendChild(hoverDiv);
-//     colWrapper.appendChild(prodDiv);
-//   }
-// };
-
 const printeazaProdus = function (product) {
   const colWrapper = document.createElement("div");
   const prodDiv = document.createElement("div");
@@ -145,10 +86,25 @@ const printeazaProdus = function (product) {
   });
 };
 
+const storedData = localStorage.getItem("cart");
+const userData = JSON.parse(storedData);
+// console.log(storedData);
+// console.log(userData);
+
+function cartAfterRefresh(userData) {
+  if (userData !== null) {
+    printeazaCart(userData);
+  } else {
+    return;
+  }
+}
+cartAfterRefresh(userData);
+
 const productsCart = [];
 
 function addToCart(product) {
   productsCart.push(product);
+  localStorage.setItem("cart", JSON.stringify(productsCart));
   printeazaCart(productsCart);
 }
 
@@ -201,7 +157,7 @@ function printeazaCart(cartIntreg) {
 
     firstSpan.innerText = countValues(cartIntreg, prod.title);
     secondSpan.innerText = "X";
-    thirdSpan.innerText = prod.salePrice;
+    thirdSpan.innerText = "$ " + prod.salePrice;
 
     cartProductInfo.appendChild(firstP);
     cartProductInfo.append(secondP);
@@ -218,6 +174,7 @@ function printeazaCart(cartIntreg) {
   iElem.addEventListener("click", () => {
     cartProducts.innerHTML = "";
     shoppingCartTotal.innerHTML = "";
+    localStorage.clear();
   });
 }
 
@@ -242,8 +199,11 @@ const chosePlatform = (steam, metaCritic) =>
   steam > metaCritic ? "Steam" : "MetaCritic";
 
 function printeazaProduse(arrayDeProduse) {
-  const produsePentruCard = arrayDeProduse;
-
+  // const produsePentruCard = arrayDeProduse;
+  const produseTotale = arrayDeProduse;
+  const produsePentruCard = arrayDeProduse.slice(0, 20);
+  const results = document.querySelector(".results");
+  results.innerHTML = `<p>Showing ${produsePentruCard.length} of ${produseTotale.length} results</p>`;
   produsePentruCard.forEach(function (el) {
     printeazaProdus(el);
   });

@@ -163,7 +163,7 @@ function printeazaCart(cartIntreg) {
 
     firstSpan.innerText = countValues(cartIntreg, storedData.title);
     secondSpan.innerText = "X";
-    thirdSpan.innerText = storedData.salePrice;
+    thirdSpan.innerText = "$ " + storedData.salePrice;
 
     cartProductInfo.appendChild(firstP);
     cartProductInfo.append(secondP);

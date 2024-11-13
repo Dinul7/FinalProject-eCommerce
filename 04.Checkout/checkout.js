@@ -7,7 +7,14 @@ const banner = document.querySelector(".banner");
 const clearBtn = document.querySelector(".fa-times-circle");
 const cartProducts = document.querySelector(".shopping-cart-products");
 const placeOrderBtn = document.getElementById("order-btn");
+
+const orderProducts = document.querySelector(".order-products");
+const subtotalEl = document.querySelector(".subtotal");
+const discountEl = document.querySelector(".discount-checkout");
+const totalEl = document.querySelector(".total");
+
 // const imputsInfos = document.querySelectorAll("input");
+
 const fetchGames = async function () {
   const resp = await fetch(
     "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15"
@@ -175,16 +182,21 @@ function printeazaCart(cartIntreg) {
   iElem.addEventListener("click", () => {
     cartProducts.innerHTML = "";
     shoppingCartTotal.innerHTML = "";
+    localStorage.clear();
+    orderProducts.innerHTML = "";
+    subtotalEl.innerHTML = "";
+    discountEl.innerHTML = "";
+    totalEl.innerHTML = "";
   });
 
   printeazaCheckout(cartIntreg);
 }
 
 function printeazaCheckout(cart) {
-  const orderProducts = document.querySelector(".order-products");
-  const subtotalEl = document.querySelector(".subtotal");
-  const discountEl = document.querySelector(".discount-checkout");
-  const totalEl = document.querySelector(".total");
+  // const orderProducts = document.querySelector(".order-products");
+  // const subtotalEl = document.querySelector(".subtotal");
+  // const discountEl = document.querySelector(".discount-checkout");
+  // const totalEl = document.querySelector(".total");
   console.log(cart);
 
   filtreazaCart(cart).forEach(function (el) {
@@ -208,8 +220,8 @@ function printeazaCheckout(cart) {
     discountEl.innerHTML = `
     <h5>Discount</h5>
     <p>$ ${parseFloat(
-      parseFloat(calculateTotalWitoutDiscount(cart).toFixed(2)) -
-        parseFloat(calculateTotal(cart).toFixed(0))
+      parseFloat(calculateTotalWitoutDiscount(cart).toFixed(1)) -
+        parseFloat(calculateTotal(cart).toFixed(2))
     )}
     `;
 
