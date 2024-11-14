@@ -6,7 +6,7 @@ const bagBtn = document.querySelector(".fa-shopping-bag");
 const banner = document.querySelector(".banner");
 const clearBtn = document.querySelector(".fa-times-circle");
 const cartProducts = document.querySelector(".shopping-cart-products");
-
+const pageBtn = document.querySelectorAll(".page-btn");
 const fetchGames = async function () {
   const rasp = await fetch(
     "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15"
@@ -215,4 +215,11 @@ shopBtn.addEventListener("click", () => {
 
 bagBtn.addEventListener("click", () => {
   shoppingCart.classList.add("no-show");
+});
+
+pageBtn.forEach(function (el) {
+  if (el.classList.contains("active")) {
+    console.log(el);
+    // el.classList.remove("active");
+  }
 });
