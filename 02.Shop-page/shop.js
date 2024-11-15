@@ -6,7 +6,8 @@ const bagBtn = document.querySelector(".fa-shopping-bag");
 const banner = document.querySelector(".banner");
 const clearBtn = document.querySelector(".fa-times-circle");
 const cartProducts = document.querySelector(".shopping-cart-products");
-const pageBtn = document.querySelectorAll(".page-btn");
+const pageBtns = document.querySelectorAll(".page-btn");
+const next = document.querySelector(".next-btn");
 const fetchGames = async function () {
   const rasp = await fetch(
     "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15"
@@ -217,9 +218,40 @@ bagBtn.addEventListener("click", () => {
   shoppingCart.classList.add("no-show");
 });
 
-pageBtn.forEach(function (el) {
-  if (el.classList.contains("active")) {
-    console.log(el);
-    // el.classList.remove("active");
-  }
+let currActive = 0;
+
+pageBtns.forEach((btn, idx) => {
+  btn.addEventListener("click", () => {
+    currActive = idx;
+    console.log(currActive);
+    document.querySelector(".active").classList.remove("active");
+    btn.classList.add("active");
+  });
 });
+
+// next.addEventListener("click", () => {
+//   currActive++;
+//   if (currActive > pageBtns.length) {
+//     currActive = pageBtns.length;
+//   }
+//   updateActive();
+// });
+
+// function updateActive() {
+//   pageBtns.forEach((btn, idx) => {
+//     console.log(btn);
+//     if (idx < currActive) {
+//       console.log(`Indexul este ${idx}`);
+//       console.log(`Curent active este ${currActive}`);
+//       btn.classList.add("active");
+//     } else if (currActive > idx) {
+//       btn.classList.remove("active");
+//     }
+//     if (currActive > idx) {
+//       btn.classList.remove("active");
+//     } else if (currActive > idx) {
+//       btn.classList.add("active");
+//     }
+//   });
+
+// }

@@ -105,8 +105,8 @@
 }
 
 .page-btn {
-  height: 60px;
   width: 60px;
+  height: 60px;
   border-radius: 10px;
   background-color: #f9f1e7;
   border: none;
@@ -120,6 +120,20 @@
 
 .next-btn {
   width: 98px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #f9f1e7;
+  border: none;
+
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  cursor: pointer;
+}
+.next-btn:hover {
+  background-color: #b88e2f;
+  color: #fff;
 }
 
 .page-btn.active {
