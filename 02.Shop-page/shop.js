@@ -200,7 +200,7 @@ const chosePlatform = (steam, metaCritic) =>
   steam > metaCritic ? "Steam" : "MetaCritic";
 
 function printeazaProduse(arrayDeProduse) {
-  // const produsePentruCard = arrayDeProduse;
+  /// ce trebe sa ramana;
   const produseTotale = arrayDeProduse;
   const produsePentruCard = arrayDeProduse.slice(0, 20);
   const results = document.querySelector(".results");
@@ -224,34 +224,30 @@ pageBtns.forEach((btn, idx) => {
   btn.addEventListener("click", () => {
     currActive = idx;
     console.log(currActive);
+    if (currActive === 1) {
+      function printeazaProduse(arrayDeProduse) {
+        /// ce trebe sa ramana;
+        const produseTotale = arrayDeProduse;
+        const produsePentruCard = arrayDeProduse.slice(0, 20);
+        const results = document.querySelector(".results");
+        results.innerHTML = `<p>Showing ${produsePentruCard.length} of ${produseTotale.length} results</p>`;
+        produsePentruCard.forEach(function (el) {
+          printeazaProdus(el);
+        });
+      }
+    }
     document.querySelector(".active").classList.remove("active");
     btn.classList.add("active");
   });
 });
 
-// next.addEventListener("click", () => {
-//   currActive++;
-//   if (currActive > pageBtns.length) {
-//     currActive = pageBtns.length;
-//   }
-//   updateActive();
-// });
-
-// function updateActive() {
-//   pageBtns.forEach((btn, idx) => {
-//     console.log(btn);
-//     if (idx < currActive) {
-//       console.log(`Indexul este ${idx}`);
-//       console.log(`Curent active este ${currActive}`);
-//       btn.classList.add("active");
-//     } else if (currActive > idx) {
-//       btn.classList.remove("active");
-//     }
-//     if (currActive > idx) {
-//       btn.classList.remove("active");
-//     } else if (currActive > idx) {
-//       btn.classList.add("active");
-//     }
-//   });
-
-// }
+next.addEventListener("click", (e) => {
+  currActive += e.target.id === "next" ? 1 : 1;
+  if (currActive > pageBtns.length - 1) {
+    return;
+  }
+  // console.log(currActive);
+  pageBtns.forEach((btn, idx) => {
+    btn.classList.toggle("active", idx === currActive);
+  });
+});

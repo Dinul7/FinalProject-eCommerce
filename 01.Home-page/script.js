@@ -6,6 +6,7 @@ const bagBtn = document.querySelector(".fa-shopping-bag");
 const banner = document.querySelector(".banner");
 const clearBtn = document.querySelector(".fa-times-circle");
 const cartProducts = document.querySelector(".shopping-cart-products");
+const showMoreBtn = document.querySelector(".show-more");
 
 const fetchGames = async function () {
   const rasp = await fetch(
@@ -89,6 +90,14 @@ function printeazaProduse(arrayDeProduse) {
   // console.log(produsePentruCard);
   produsePentruCard.forEach(function (el) {
     printeazaProdus(el);
+  });
+  showMoreBtn.addEventListener("click", () => {
+    const produsePentruCard = arrayDeProduse.slice(8, 20);
+    // console.log(produsePentruCard);
+    produsePentruCard.forEach(function (el) {
+      printeazaProdus(el);
+    });
+    showMoreBtn.style.visibility = "hidden";
   });
 }
 
