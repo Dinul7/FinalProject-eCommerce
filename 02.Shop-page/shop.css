@@ -93,6 +93,8 @@
 
 .products-wrapper {
   margin-top: 63px;
+  /* height: 1900px; */
+  overflow: hidden;
 }
 
 .btn-wrapper {

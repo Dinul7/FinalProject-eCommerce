@@ -331,6 +331,9 @@ main h2 {
   position: relative;
   width: 285px;
 }
+.col-wrapper.hidden {
+  display: none;
+}
 
 .col-wrapper:hover {
   cursor: pointer;

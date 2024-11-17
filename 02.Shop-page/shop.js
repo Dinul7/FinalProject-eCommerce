@@ -199,14 +199,82 @@ const chooseHighScore = (steamScore, metacriticScore) =>
 const chosePlatform = (steam, metaCritic) =>
   steam > metaCritic ? "Steam" : "MetaCritic";
 
+/// ce trebe sa ramana;
+let currActive = 0;
+let prodPerPage = 20;
+
+// function printeazaProduse(arrayDeProduse) {
+//   const produseTotale = arrayDeProduse;
+//   const produsePentruCard = arrayDeProduse.slice(0, 20);
+//   const results = document.querySelector(".results");
+//   results.innerHTML = `<p>Showing ${produsePentruCard.length} of ${produseTotale.length} results</p>`;
+//   produsePentruCard.forEach(function (el) {
+//     printeazaProdus(el);
+//   });
+// }
+
+// pageBtns.forEach((btn, idx) => {
+//   btn.addEventListener("click", () => {
+//     currActive = idx;
+//     // console.log(currActive);
+//     document.querySelector(".active").classList.remove("active");
+//     btn.classList.add("active");
+//   });
+// });
+
+// next.addEventListener("click", (e) => {
+//   currActive += e.target.id === "next" ? 1 : 1;
+//   if (currActive > pageBtns.length - 1) {
+//     return;
+//   }
+//   // console.log(currActive);
+//   pageBtns.forEach((btn, idx) => {
+//     btn.classList.toggle("active", idx === currActive);
+//   });
+// });
+
 function printeazaProduse(arrayDeProduse) {
-  /// ce trebe sa ramana;
-  const produseTotale = arrayDeProduse;
-  const produsePentruCard = arrayDeProduse.slice(0, 20);
-  const results = document.querySelector(".results");
+  let produseTotale = arrayDeProduse;
+  let produsePentruCard = arrayDeProduse.slice(0, 20);
+  let results = document.querySelector(".results");
   results.innerHTML = `<p>Showing ${produsePentruCard.length} of ${produseTotale.length} results</p>`;
   produsePentruCard.forEach(function (el) {
     printeazaProdus(el);
+  });
+
+  pageBtns.forEach((btn, idx) => {
+    btn.addEventListener("click", () => {
+      const colWrappers = document.querySelectorAll(".col-wrapper");
+      colWrappers.forEach((wrapper) => {
+        wrapper.classList.add("hidden");
+      });
+      currActive = idx;
+      console.log(currActive);
+      next.addEventListener("click", (e) => {
+        currActive += e.target.id === "next" ? 1 : -1;
+        if (currActive > idx) {
+          return;
+        }
+
+        console.log(currActive);
+
+        btn.classList.toggle("active", idx === currActive);
+      });
+      // console.log(currActive);
+      document.querySelector(".active").classList.remove("active");
+      btn.classList.add("active");
+
+      let prevRange = idx * prodPerPage + 20;
+      let currRange = (idx - 1) * prodPerPage + 20;
+      let produseTotale = arrayDeProduse;
+      let produsePentruCard = arrayDeProduse.slice(currRange, prevRange);
+
+      produsePentruCard.forEach(function (el) {
+        printeazaProdus(el);
+      });
+      let results = document.querySelector(".results");
+      results.innerHTML = `<p>Showing ${prevRange} of ${produseTotale.length} results</p>`;
+    });
   });
 }
 
@@ -216,38 +284,4 @@ shopBtn.addEventListener("click", () => {
 
 bagBtn.addEventListener("click", () => {
   shoppingCart.classList.add("no-show");
-});
-
-let currActive = 0;
-
-pageBtns.forEach((btn, idx) => {
-  btn.addEventListener("click", () => {
-    currActive = idx;
-    console.log(currActive);
-    if (currActive === 1) {
-      function printeazaProduse(arrayDeProduse) {
-        /// ce trebe sa ramana;
-        const produseTotale = arrayDeProduse;
-        const produsePentruCard = arrayDeProduse.slice(0, 20);
-        const results = document.querySelector(".results");
-        results.innerHTML = `<p>Showing ${produsePentruCard.length} of ${produseTotale.length} results</p>`;
-        produsePentruCard.forEach(function (el) {
-          printeazaProdus(el);
-        });
-      }
-    }
-    document.querySelector(".active").classList.remove("active");
-    btn.classList.add("active");
-  });
-});
-
-next.addEventListener("click", (e) => {
-  currActive += e.target.id === "next" ? 1 : 1;
-  if (currActive > pageBtns.length - 1) {
-    return;
-  }
-  // console.log(currActive);
-  pageBtns.forEach((btn, idx) => {
-    btn.classList.toggle("active", idx === currActive);
-  });
 });
