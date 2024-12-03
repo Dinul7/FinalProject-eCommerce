@@ -242,6 +242,7 @@ function printeazaProduse(arrayDeProduse) {
     printeazaProdus(el);
   });
 
+  //Oprit momentan
   pageBtns.forEach((btn, idx) => {
     btn.addEventListener("click", () => {
       const colWrappers = document.querySelectorAll(".col-wrapper");
@@ -249,18 +250,7 @@ function printeazaProduse(arrayDeProduse) {
         wrapper.classList.add("hidden");
       });
       currActive = idx;
-      console.log(currActive);
-      next.addEventListener("click", (e) => {
-        currActive += e.target.id === "next" ? 1 : -1;
-        if (currActive > idx) {
-          return;
-        }
 
-        console.log(currActive);
-
-        btn.classList.toggle("active", idx === currActive);
-      });
-      // console.log(currActive);
       document.querySelector(".active").classList.remove("active");
       btn.classList.add("active");
 
@@ -272,8 +262,44 @@ function printeazaProduse(arrayDeProduse) {
       produsePentruCard.forEach(function (el) {
         printeazaProdus(el);
       });
+
       let results = document.querySelector(".results");
       results.innerHTML = `<p>Showing ${prevRange} of ${produseTotale.length} results</p>`;
+    });
+  });
+
+  ////Click NEXT
+  next.addEventListener("click", (e) => {
+    console.log(currActive);
+    if (currActive <= 1) {
+      currActive++;
+    } else if (currActive === 2) {
+      currActive = 0;
+    }
+
+    //display sper products
+    const colWrappers = document.querySelectorAll(".col-wrapper");
+    colWrappers.forEach((wrapper) => {
+      wrapper.classList.add("hidden");
+    });
+
+    document.querySelector(".active").classList.remove("active");
+
+    let prevRange = currActive * prodPerPage + 20;
+    let currRange = (currActive - 1) * prodPerPage + 20;
+    let produseTotale = arrayDeProduse;
+    let produsePentruCard = arrayDeProduse.slice(currRange, prevRange);
+
+    produsePentruCard.forEach(function (el) {
+      printeazaProdus(el);
+    });
+
+    let results = document.querySelector(".results");
+    results.innerHTML = `<p>Showing ${prevRange} of ${produseTotale.length} results</p>`;
+    //display sper products end
+
+    pageBtns.forEach((btn, idx) => {
+      btn.classList.toggle("active", idx === currActive);
     });
   });
 }
